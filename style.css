@@ -1,0 +1,300 @@
+/* ---------- Базовые настройки ---------- */
+:root {
+  --bg: #f7f9fc;
+  --surface: #ffffff;
+  --text: #1e2a3a;
+  --muted: #5a6b7f;
+  --accent: #c0392b;
+  --accent-soft: #fdecea;
+  --border: #dde4ed;
+  --focus: #2563eb;
+  --radius: 12px;
+  --shadow: 0 4px 20px rgba(30, 42, 58, 0.08);
+  --max-width: 880px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* ---------- Доступность ---------- */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  z-index: 100;
+  border-radius: 0 0 var(--radius) 0;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* ---------- Контейнер ---------- */
+.container {
+  width: min(100% - 2rem, var(--max-width));
+  margin-inline: auto;
+}
+
+/* ---------- Шапка ---------- */
+.site-header {
+  background: linear-gradient(135deg, #1e2a3a 0%, #2c3e50 100%);
+  color: #f0f4f8;
+  padding: 2.5rem 0 2rem;
+}
+
+.badge {
+  display: inline-block;
+  margin: 0 0 1rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+}
+
+h1 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  line-height: 1.25;
+}
+
+.lead {
+  margin: 0;
+  max-width: 60ch;
+  color: #c9d6e3;
+}
+
+/* ---------- Основные секции ---------- */
+main {
+  padding: 2rem 0 3rem;
+}
+
+section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.5rem 1.75rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+  color: #1e2a3a;
+  border-bottom: 2px solid var(--accent-soft);
+  padding-bottom: 0.4rem;
+}
+
+ul,
+ol {
+  padding-left: 1.3rem;
+}
+
+li {
+  margin-bottom: 0.4rem;
+}
+
+.note {
+  background: #fff8e6;
+  border-left: 4px solid #f0b429;
+  padding: 0.75rem 1rem;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 0.95rem;
+}
+
+/* ---------- Чек-лист и фильтры ---------- */
+.checklist-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 0.75rem;
+}
+
+.filter-btn {
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #f0f4f8;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.filter-btn:hover {
+  background: #e2eaf3;
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.checklist-status {
+  min-height: 1.4em;
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin: 0 0 0.75rem;
+}
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 0.5rem;
+  background: #fbfcfe;
+  transition: background 0.2s;
+}
+
+.checklist li:hover {
+  background: #f4f8fd;
+}
+
+.checklist li[hidden] {
+  display: none;
+}
+
+.checklist input[type="checkbox"] {
+  margin-top: 0.3rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.checklist label {
+  cursor: pointer;
+  flex: 1;
+}
+
+.checklist input:checked + label {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+/* Метка этапа внутри пункта */
+.stage-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
+
+.stage-before {
+  background: #e0f2fe;
+  color: #075985;
+}
+.stage-during {
+  background: #fef3c7;
+  color: #92400e;
+}
+.stage-after {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.reset-btn {
+  font: inherit;
+  margin-top: 1rem;
+  padding: 0.5rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.reset-btn:hover {
+  background: #f0f4f8;
+}
+
+/* ---------- Источники ---------- */
+.sources-list a {
+  color: var(--focus);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.sources-list a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* ---------- Футер ---------- */
+.site-footer {
+  background: #1e2a3a;
+  color: #b8c7d9;
+  padding: 1.5rem 0;
+  font-size: 0.9rem;
+}
+
+.site-footer p {
+  margin: 0.25rem 0;
+}
+
+/* ---------- Адаптивность ---------- */
+@media (max-width: 600px) {
+  section {
+    padding: 1.15rem 1rem 1.35rem;
+  }
+
+  .checklist-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .checklist li {
+    padding: 0.6rem 0.7rem;
+  }
+}
