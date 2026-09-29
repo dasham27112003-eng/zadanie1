@@ -7,18 +7,42 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <a href="#main" class="skip-link">Перейти к основному содержанию</a>
 
   <header class="site-header">
+    <div class="smoke" aria-hidden="true">
+      <span class="smoke__puff smoke__puff--1"></span>
+      <span class="smoke__puff smoke__puff--2"></span>
+      <span class="smoke__puff smoke__puff--3"></span>
+      <span class="smoke__puff smoke__puff--4"></span>
+      <span class="smoke__puff smoke__puff--5"></span>
+      <span class="smoke__puff smoke__puff--6"></span>
+    </div>
     <div class="container">
       <p class="badge">Учебный проект · Техносферная безопасность</p>
-      <h1>Задымление: карточка риска и памятка действий</h1>
+      <h1 class="page-title">
+        <span class="page-title__main">Задымление:</span>
+        <span class="page-title__sub">карточка риска и памятка действий</span>
+      </h1>
       <p class="lead">
         Краткая справка о риске задымления, признаках, действиях «до», «во время» и «после»,
         а также о том, когда нужно обращаться в официальные службы.
       </p>
     </div>
   </header>
+
+  <nav class="site-nav" aria-label="Навигация по разделам страницы">
+    <div class="container">
+      <ul class="site-nav__list">
+        <li><a href="#risk-heading" class="site-nav__link">О риске</a></li>
+        <li><a href="#signs-heading" class="site-nav__link">Признаки</a></li>
+        <li><a href="#actions-heading" class="site-nav__link">Действия</a></li>
+        <li><a href="#official-heading" class="site-nav__link">Когда звонить</a></li>
+        <li><a href="#sources-heading" class="site-nav__link">Источники</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <main id="main" class="container">
     <!-- Блок 1: Описание риска -->
@@ -30,9 +54,7 @@
         Основную опасность представляют не только открытое пламя, но и <strong>едкий дым</strong>:
         в процессе горения выделяются токсичные газы, а содержание кислорода в воздухе падает.
       </p>
-      <p>
-        Риск существенен для всех, но особенно уязвимы:
-      </p>
+      <p>Риск существенен для всех, но особенно уязвимы:</p>
       <ul>
         <li>дети, пожилые люди и лица с хроническими заболеваниями (сердечно-сосудистыми, лёгочными);</li>
         <li>люди, находящиеся в зоне лесных пожаров или вблизи очага возгорания;</li>
@@ -92,9 +114,7 @@
     <!-- Блок 4: Когда обращаться к официальной службе -->
     <section aria-labelledby="official-heading">
       <h2 id="official-heading">Когда обращаться к официальной службе</h2>
-      <p>
-        Обращайтесь в экстренные службы или к врачу в следующих ситуациях:
-      </p>
+      <p>Обращайтесь в экстренные службы или к врачу в следующих ситуациях:</p>
       <ul>
         <li>Вы видите открытый огонь, густой дым или чувствуете сильный запах гари — звоните
           <strong>«101»</strong> или <strong>«112»</strong>.</li>
@@ -148,6 +168,44 @@
       <p><small>Данные носят информационный характер. Не заменяет официальные инструкции.</small></p>
     </div>
   </footer>
+
+  <button
+    type="button"
+    id="back-to-top"
+    class="back-to-top"
+    aria-label="Вернуться к началу страницы"
+    hidden
+  >
+    <svg class="back-to-top__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M12 4 L12 20 M12 4 L5 11 M12 4 L19 11"
+            fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="back-to-top__label">Наверх</span>
+  </button>
+
+  <!-- SVG-фильтр турбулентности для дыма -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="smoke-turbulence">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.012 0.02"
+          numOctaves="3"
+          seed="7"
+          result="noise">
+          <animate
+            attributeName="baseFrequency"
+            dur="40s"
+            values="0.012 0.02; 0.018 0.028; 0.012 0.02"
+            repeatCount="indefinite"/>
+        </feTurbulence>
+        <feDisplacementMap
+          in="SourceGraphic" in2="noise" scale="45"
+          xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+    </defs>
+  </svg>
 
   <script src="script.js"></script>
 </body>
